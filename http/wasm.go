@@ -28,7 +28,7 @@ func DefaultWASMOptions() *WASMOptions {
 	opts := &WASMOptions{
 		CSS: []string{},
 		JS: []string{
-			"/javascript/whosonfirst.export.init.js",
+			"/javascript/whosonfirst.export.feature.js",
 		},
 	}
 

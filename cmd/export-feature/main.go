@@ -56,6 +56,6 @@ func main() {
 
 	c := make(chan struct{}, 0)
 
-	log.Println("WASM EXIF updater initialized")
+	log.Println("WOF export feature WASM binary initialized")
 	<-c
 }

@@ -10,9 +10,33 @@
   </head>
 
   <body>
-      <div class="container">
-	  <div id="raw"></div>
-	  <div id="exported"></div>	  
+      <div id="container">
+	  <div>
+	      <pre id="raw" contenteditable>{
+   "type": "Feature",
+   "properties": {
+	"wof:id": -1,
+        "wof:name": "Example",
+        "wof:placetype": "venue",
+        "edtf:inception": "1956/1958",
+        "edtf:cessation": ".."
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -122.405008,
+     37.626061
+    ]
+   }
+  }
+	      </pre>
+	      <small style="font-style:italic;">Edit the GeoJSON Feature above, if necessary, and then click the <code>Export</code> button.</small>
+	  <button id="submit" type="submit" disabled>Loading</button>	  
+	  </div>
+	  <div>
+	      <pre id="exported"></pre>
+	      <div id="feedback"></div>
+	  </div>
       </div>
   </body>
 </html>
