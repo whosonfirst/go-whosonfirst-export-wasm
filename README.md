@@ -12,7 +12,9 @@ GOOS=js GOARCH=wasm go build -mod vendor -o export_feature.wasm cmd/export-featu
 
 ## Use
 
-To use the `export_feature` WebAssembly binary in your applications a JSON-encoded GeoJSON string to the `export_feature` function. The function returns a JavaScript `Promise` that will return a JSON-encoded Who's On First (WOF) GeoJSON string on success or an error message if there was a problem.
+To use the `export_feature` WebAssembly binary in your applications a JSON-encoded GeoJSON string to the `export_feature` function.
+
+The function returns a JavaScript `Promise` that will return a JSON-encoded Who's On First (WOF) GeoJSON string on success or an error message if there was a problem.
 
 ```
 	var str_f = '{"type": "Feature" ... }'	// A valid GeoJSON Feature
@@ -24,7 +26,7 @@ To use the `export_feature` WebAssembly binary in your applications a JSON-encod
 	});
 ```
 
-In order to load the `export_feature` function you will need to include the `wasm_exec.js` and `whosonfirst.export.feature.js` JavaScript files, or functional equivalents. Both scripts are bundled with the package in the `static/javascript` folder.
+In order to load the `export_feature` function you will need to include the `wasm_exec.js` and `whosonfirst.export.feature.js` JavaScript files, or functional equivalents. Both scripts are bundled with this package in the [static/javascript](static/javascript) folder.
 
 ## Middleware
 
@@ -35,8 +37,6 @@ package main
 
 import (
 	"embed"
-	"flag"
-	"fmt"
 	wasm "github.com/whosonfirst/go-whosonfirst-export-wasm/http"
 	"log"
 	"net/http"
@@ -46,11 +46,6 @@ import (
 var FS embed.FS
 
 func main() {
-
-	host := flag.String("host", "localhost", "The host name to listen for requests on")
-	port := flag.Int("port", 8080, "The host port to listen for requests on")
-
-	flag.Parse()
 
 	mux := http.NewServeMux()
 
@@ -66,7 +61,7 @@ func main() {
 
 	mux.Handle("/", example_handler)
 
-	addr := fmt.Sprintf("%s:%d", *host, *port)
+	addr := "localhost:8080"
 	log.Printf("Listening for requests on %s\n", addr)
 
 	http.ListenAndServe(addr, mux)

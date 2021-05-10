@@ -9,8 +9,6 @@ window.addEventListener("load", function load(event){
 	feedback.innerText = ""
 	exported.innerText = "";
 
-	console.log("WTF '" + raw.innerText + "'");
-
 	try {
 	    var f = JSON.parse(raw.innerText);
 	} catch(err) {
@@ -21,10 +19,8 @@ window.addEventListener("load", function load(event){
 	var str_f = JSON.stringify(f);
 	
 	export_feature(str_f).then(rsp => {
-
 	    exported.innerText = rsp;
 	}).catch(err => {
-
 	    feedback.innerText = "Failed to export feature: " + err;
 	});
     };
