@@ -21,14 +21,14 @@ func ExportFunc(ex export.Exporter) js.Func {
 
 			go func() {
 
-				ctx := context.Background()				
+				ctx := context.Background()
 				feature_data, err := ex.Export(ctx, []byte(geojson_data))
 
 				if err != nil {
 					reject.Invoke(fmt.Sprintf("Failed to export data, %v", err))
 					return
 				}
-				
+
 				resolve.Invoke(string(feature_data))
 			}()
 
@@ -48,7 +48,7 @@ func main() {
 	if err != nil {
 		log.Fatalf("Failed to create new exporter, %v", err)
 	}
-	
+
 	export_func := ExportFunc(ex)
 	defer export_func.Release()
 

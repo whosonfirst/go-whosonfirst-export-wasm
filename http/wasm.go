@@ -2,8 +2,8 @@ package http
 
 import (
 	"fmt"
-	"github.com/whosonfirst/go-whosonfirst-export-wasm/static"
 	"github.com/aaronland/go-http-rewrite"
+	"github.com/whosonfirst/go-whosonfirst-export-wasm/static"
 	"io/fs"
 	_ "log"
 	gohttp "net/http"
@@ -26,10 +26,9 @@ func (opts *WASMOptions) EnableWASMExec() {
 func DefaultWASMOptions() *WASMOptions {
 
 	opts := &WASMOptions{
-		CSS: []string{
-
-		},
+		CSS: []string{},
 		JS: []string{
+			"/javascript/whosonfirst.export.init.js",
 		},
 	}
 
