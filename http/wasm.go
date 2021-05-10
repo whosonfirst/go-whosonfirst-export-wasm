@@ -1,4 +1,4 @@
-package wasm
+package http
 
 import (
 	"fmt"
@@ -6,7 +6,7 @@ import (
 	"github.com/aaronland/go-http-rewrite"
 	"io/fs"
 	_ "log"
-	"net/http"
+	gohttp "net/http"
 	"path/filepath"
 	"strings"
 )
@@ -37,12 +37,12 @@ func DefaultWASMOptions() *WASMOptions {
 }
 
 // AppendResourcesHandler will rewrite any HTML produced by previous handler to include the necessary markup to load WASM JavaScript and CSS files and related assets.
-func AppendResourcesHandler(next http.Handler, opts *WASMOptions) http.Handler {
+func AppendResourcesHandler(next gohttp.Handler, opts *WASMOptions) gohttp.Handler {
 	return AppendResourcesHandlerWithPrefix(next, opts, "")
 }
 
 // AppendResourcesHandlerWithPrefix will rewrite any HTML produced by previous handler to include the necessary markup to load WASM JavaScript files and related assets ensuring that all URIs are prepended with a prefix.
-func AppendResourcesHandlerWithPrefix(next http.Handler, opts *WASMOptions, prefix string) http.Handler {
+func AppendResourcesHandlerWithPrefix(next gohttp.Handler, opts *WASMOptions, prefix string) gohttp.Handler {
 
 	js := opts.JS
 	css := opts.CSS
@@ -67,14 +67,14 @@ func AppendResourcesHandlerWithPrefix(next http.Handler, opts *WASMOptions, pref
 }
 
 // AssetsHandler returns a net/http FS instance containing the embedded WASM assets that are included with this package.
-func AssetsHandler() (http.Handler, error) {
+func AssetsHandler() (gohttp.Handler, error) {
 
-	http_fs := http.FS(static.FS)
-	return http.FileServer(http_fs), nil
+	http_fs := gohttp.FS(static.FS)
+	return gohttp.FileServer(http_fs), nil
 }
 
 // AssetsHandler returns a net/http FS instance containing the embedded WASM assets that are included with this package ensuring that all URLs are stripped of prefix.
-func AssetsHandlerWithPrefix(prefix string) (http.Handler, error) {
+func AssetsHandlerWithPrefix(prefix string) (gohttp.Handler, error) {
 
 	fs_handler, err := AssetsHandler()
 
@@ -88,7 +88,7 @@ func AssetsHandlerWithPrefix(prefix string) (http.Handler, error) {
 		return fs_handler, nil
 	}
 
-	rewrite_func := func(req *http.Request) (*http.Request, error) {
+	rewrite_func := func(req *gohttp.Request) (*gohttp.Request, error) {
 		req.URL.Path = strings.Replace(req.URL.Path, prefix, "", 1)
 		return req, nil
 	}
@@ -98,12 +98,12 @@ func AssetsHandlerWithPrefix(prefix string) (http.Handler, error) {
 }
 
 // Append all the files in the net/http FS instance containing the embedded WASM assets to an *http.ServeMux instance.
-func AppendAssetHandlers(mux *http.ServeMux) error {
+func AppendAssetHandlers(mux *gohttp.ServeMux) error {
 	return AppendAssetHandlersWithPrefix(mux, "")
 }
 
 // Append all the files in the net/http FS instance containing the embedded WASM assets to an *http.ServeMux instance ensuring that all URLs are prepended with prefix.
-func AppendAssetHandlersWithPrefix(mux *http.ServeMux, prefix string) error {
+func AppendAssetHandlersWithPrefix(mux *gohttp.ServeMux, prefix string) error {
 
 	asset_handler, err := AssetsHandlerWithPrefix(prefix)
 
