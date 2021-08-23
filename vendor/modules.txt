@@ -4,7 +4,7 @@ github.com/aaronland/go-artisanal-integers
 github.com/aaronland/go-artisanal-integers-proxy/service
 # github.com/aaronland/go-brooklynintegers-api v1.1.0
 github.com/aaronland/go-brooklynintegers-api
-# github.com/aaronland/go-http-rewrite v0.0.6
+# github.com/aaronland/go-http-rewrite v0.0.7
 ## explicit
 github.com/aaronland/go-http-rewrite
 # github.com/aaronland/go-pool v0.0.0-20191128211702-88306299c758
@@ -17,7 +17,7 @@ github.com/aaronland/go-string/random
 github.com/aaronland/go-uid
 # github.com/aaronland/go-uid-artisanal v0.0.0-20191128230022-67bc446aa49d
 github.com/aaronland/go-uid-artisanal
-# github.com/paulmach/orb v0.2.1
+# github.com/paulmach/orb v0.2.2
 github.com/paulmach/orb
 github.com/paulmach/orb/geojson
 github.com/paulmach/orb/internal/length
@@ -32,24 +32,24 @@ github.com/sfomuseum/go-edtf/level2
 github.com/sfomuseum/go-edtf/parser
 github.com/sfomuseum/go-edtf/re
 github.com/sfomuseum/go-edtf/tests
-# github.com/tidwall/gjson v1.7.5
+# github.com/tidwall/gjson v1.8.1
 github.com/tidwall/gjson
 # github.com/tidwall/match v1.0.3
 github.com/tidwall/match
-# github.com/tidwall/pretty v1.1.0
+# github.com/tidwall/pretty v1.2.0
 github.com/tidwall/pretty
-# github.com/tidwall/sjson v1.1.6
+# github.com/tidwall/sjson v1.1.7
 github.com/tidwall/sjson
-# github.com/whosonfirst/go-whosonfirst-export/v2 v2.3.0
+# github.com/whosonfirst/go-whosonfirst-export/v2 v2.3.3
 ## explicit
 github.com/whosonfirst/go-whosonfirst-export/v2
 github.com/whosonfirst/go-whosonfirst-export/v2/properties
-# github.com/whosonfirst/go-whosonfirst-format v0.3.0
+# github.com/whosonfirst/go-whosonfirst-format v0.3.1
 github.com/whosonfirst/go-whosonfirst-format
 # github.com/whosonfirst/go-whosonfirst-id v0.0.2
 github.com/whosonfirst/go-whosonfirst-id
 # github.com/whosonfirst/go-whosonfirst-log v0.1.0
 github.com/whosonfirst/go-whosonfirst-log
-# golang.org/x/net v0.0.0-20201002202402-0a1ea396d57c
+# golang.org/x/net v0.0.0-20210525063256-abc453219eb5
 golang.org/x/net/html
 golang.org/x/net/html/atom
