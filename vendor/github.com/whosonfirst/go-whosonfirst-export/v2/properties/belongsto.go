@@ -2,6 +2,7 @@ package properties
 
 import (
 	"errors"
+
 	"github.com/tidwall/gjson"
 	"github.com/tidwall/sjson"
 )
@@ -13,7 +14,7 @@ func EnsureBelongsTo(feature []byte) ([]byte, error) {
 	wofid_rsp := gjson.GetBytes(feature, "properties.wof:id")
 
 	if !wofid_rsp.Exists() {
-		return nil, errors.New("Missing properties.wof:id")
+		return nil, errors.New("missing properties.wof:id")
 	}
 
 	wofid := wofid_rsp.Int()
@@ -70,6 +71,19 @@ func EnsureBelongsTo(feature []byte) ([]byte, error) {
 
 			if !sliceContains(ids, id) {
 				belongsto = append(belongsto[:i], belongsto[i+1:]...)
+			}
+		}
+	}
+
+	tz_rsp := gjson.GetBytes(feature, "properties.wof:timezones")
+
+	if tz_rsp.Exists() {
+
+		for _, i := range tz_rsp.Array() {
+
+			id := i.Int()
+			if !sliceContains(belongsto, id) {
+				belongsto = append(belongsto, id)
 			}
 		}
 	}
